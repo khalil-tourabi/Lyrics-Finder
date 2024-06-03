@@ -4,9 +4,22 @@
   "description": "Lyrics-Finder is a Rest API application that allows users to easily search for and discover the lyrics of their favorite songs. In addition to providing lyrics, the application offers additional features to enhance the user experience, such as information about artists.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Khalil Tourabi & Youssef Elhoubi & Josué Percide Honhonou",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status-code": "^2.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
 }
