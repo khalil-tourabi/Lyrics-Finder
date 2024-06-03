@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Lyrics-Finder is a Rest API application that allows users to easily search for and discover the lyrics of their favorite songs. In addition to providing lyrics, the application offers additional features to enhance the user experience, such as information about artists.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon app.js"
   },
