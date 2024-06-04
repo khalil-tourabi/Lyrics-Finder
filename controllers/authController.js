@@ -2,6 +2,8 @@ import { StatusCodes } from "http-status-codes";
 import hashPassword from "../utils/hashPassword.js";
 import comparePasswords from "../utils/comparePasswords.js";
 import generateToken from "../utils/jwt.js";
+import dotenv from "dotenv"
+dotenv.config();
 import {
   BadRequestError,
   UnAuthenticatedError,

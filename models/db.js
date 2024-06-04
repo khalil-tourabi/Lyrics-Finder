@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost/LyricsFinder", {
+    await mongoose.connect("mongodb+srv://elhoubiyoussef:faghjklq@cluster0.pgmp2gi.mongodb.net/", {
     //   useNewUrlParser: true,
     //   useUnifiedTopology: true,
     });
