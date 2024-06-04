@@ -40,10 +40,7 @@ export const register = async (req, res) => {
     });
     const result = await newUser.save();
 
-    const token = generateToken(
-      { user: newUser },
-      process.env.ACCESS_TOKEN_SECRET
-    );
+    const token = generateToken({ user: newUser },process.env.ACCESS_TOKEN_SECRET);
 
     return res.status(StatusCodes.CREATED).json({ token });
   } catch (error) {
@@ -65,7 +62,7 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user)
       return res.status(StatusCodes.NOT_FOUND).json({
-        error: new UnAuthenticatedError("User does not Exist! please Register").message
+        error: new NotFoundError("User does not Exist! please Register").message
       });
 
     const correctPassword = await comparePasswords(password, user.password);

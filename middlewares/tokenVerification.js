@@ -16,7 +16,7 @@ function tokenVerification(req, res, next) {
     }
 
     const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = payload.user;
+    req.user = payload;
     next();
   } catch (error) {
     console.log(error);

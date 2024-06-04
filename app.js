@@ -8,8 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import authRoute from "./routes/authRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 app.use('/api', authRoute)
+app.use('/api', userRoute)
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
