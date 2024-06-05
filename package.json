@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "dev": "concurrently -k \"tsc -p app -w\" \"nodemon app.js\""
   },
   "keywords": [],
   "author": "Khalil Tourabi & Youssef Elhoubi & Josué Percide Honhonou",
@@ -21,9 +22,11 @@
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1",
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.2"
   }
 }

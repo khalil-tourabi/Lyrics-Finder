@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const artisteSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
+  nickname:{type:String, required:true},
   picture_url: { type: String },
   genre: { type: String },
   born_date: { type: Date },

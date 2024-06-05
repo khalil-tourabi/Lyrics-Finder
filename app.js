@@ -9,9 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 
 import authRoute from "./routes/authRoute.js";
 import userRoute from "./routes/userRoute.js";
+import findrouter from "./routes/findlyricsrouter.js";
 
 app.use('/api', authRoute)
 app.use('/api', userRoute)
+app.use('/api', findrouter)
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
