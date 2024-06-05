@@ -8,9 +8,10 @@ import {
     NotFoundError,
 } from "../errors/index.js";
 import dotenv from "dotenv";
+import connectDB from "../models/db.js";
 import { STATUS_CODES } from "http";
 dotenv.config();
-import connectDB from "../models/db.js";
+
 
 connectDB();
 
@@ -24,7 +25,7 @@ export const findmusic = async (req,res)=>{
             return res.status(StatusCodes.NOT_FOUND).json({error: new NotFoundError("sorry the song that you'r looking for does not exist ").message});
         }
 
-        return res.status(STATUS_CODES.ok).json({
+        return res.status(STATUS_CODES.Ok).json({
             music_name:song.title,
             music_lyrics:song.lyrics
         })
