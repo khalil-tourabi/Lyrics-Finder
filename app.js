@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+import {weeklyNewsLetter}from "./middlewares/newsletter.js"
 dotenv.config()
 
 const app=express()
@@ -9,7 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 
 import authRoute from "./routes/authRoute.js";
 import userRoute from "./routes/userRoute.js";
-import findrouter from "./routes/findlyricsrouter.js";
+import findrouter from "./routes/songController.js";
+
+
+weeklyNewsLetter()
 
 app.use('/api', authRoute)
 app.use('/api', userRoute)
