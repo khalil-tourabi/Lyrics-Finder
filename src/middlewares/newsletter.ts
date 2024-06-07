@@ -10,28 +10,29 @@ import {
 } from "../errors/index";
 import {Request,Response,NextFunction} from "express";
 import crone from "node-cron"
+import dotenv from "dotenv"
 
 export const subscribletter = async(req:Request,res:Response,next:NextFunction)=>{
     try {
         const {email} = req.body
-    if (!email )
-        res.status(StatusCodes.BAD_REQUEST).json({
-            error: new BadRequestError("Email and Password are obligatory!").message
-        });
+    // if (!email )
+    //     res.status(StatusCodes.BAD_REQUEST).json({
+    //         error: new BadRequestError("Email and Password are obligatory!").message
+    //     });
     
-    const existingUser = await User.find({email:email})
-    if(existingUser){
-        res.status(StatusCodes.BAD_REQUEST).json({
-                error: new BadRequestError("Email already exists!").message
-            });
-        }
+    // const existingUser = await User.find({email:email})
+    // if(existingUser){
+    //     res.status(StatusCodes.BAD_REQUEST).json({
+    //             error: new BadRequestError("Email already exists!").message
+    //         });
+    //     }
         const transporter = nodemailer.createTransport({
             host:"smtp.zoho.com",
             port:465,
             secure:true,
             auth:{
-                user:"apprenant3@talents4starups.com",
-                pass:"c2ddvc-A"
+                user: process.env.SMTP_MAIL,
+                pass:process.env.SMTP_PASSWORD
             }
         })
         const mailoption={

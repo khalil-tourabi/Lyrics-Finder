@@ -2,21 +2,20 @@ import mongoose from "mongoose";
 import { Song } from "../models/Song.js";
 import { Artiste } from "../models/Artiste.js";
 import { StatusCodes } from "http-status-codes";
-import { ExpressValidator } from "express-validator";
 import {
     BadRequestError,
     UnAuthenticatedError,
     NotFoundError,
-} from "../errors/index.js";
+} from "../errors/index";
 import dotenv from "dotenv";
+import {Request,Response} from "express"
 import connectDB from "../models/db.js";
-import { STATUS_CODES } from "http";
 dotenv.config();
 
 
 connectDB();
 
-export const findmusic = async (req,res)=>{
+export const findmusic = async (req:Request,res:Response)=>{
     try {
         const {songname} =req.body;
 
@@ -26,17 +25,17 @@ export const findmusic = async (req,res)=>{
             return res.status(StatusCodes.NOT_FOUND).json({error: new NotFoundError("sorry the song that you'r looking for does not exist ").message});
         }
 
-        return res.status(STATUS_CODES.Ok).json({
+        return res.status(StatusCodes.OK).json({
             music_name:song.title,
             music_lyrics:song.lyrics
         })
     } 
-    catch (error) {
+    catch (error:any) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
 }
 
-export const listOfArtist = async(req,res)=>{
+export const listOfArtist = async(req:Request,res:Response)=>{
     try {
         const {ArtistName} = req.body;
         const artist = await Artiste.find();
@@ -45,12 +44,12 @@ export const listOfArtist = async(req,res)=>{
         .json({message:"here is the list of the artists",
             theArtests:listOfArtist
         })
-    } catch (error) {
+    } catch (error:any) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
 }
 
-export const musicByAtrist= async(req,res)=>{
+export const musicByAtrist= async(req:Request,res:Response)=>{
     try {
         const {ArtistName} = req.body;
         if (!ArtistName) {
@@ -62,7 +61,7 @@ export const musicByAtrist= async(req,res)=>{
         .json({message:`here is the songs that we have by the this artest ${ArtistName}`,
             theArtests:musiclyrecs
         })
-    } catch (error) {
+    } catch (error:any) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
     }
 }
