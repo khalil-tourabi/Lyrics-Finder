@@ -18,7 +18,7 @@ app.use('/api', authRoute)
 app.use('/api', userRoute)
 app.use('/api', findrouter)
 
-app.use((err, req:Request, res:Response, next:NextFunction) => {
+app.use((err:any, req:Request, res:Response, next:NextFunction) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Something went wrong!' });
 });

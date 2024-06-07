@@ -1,6 +1,12 @@
 import nodemailer from 'nodemailer';
 
-export const sendEmail = async ({ email, subject, message }) => {
+interface Emaildata{
+  email:string,
+  subject:string,
+  message:string,
+}
+
+export const sendEmail = async ({ email, subject, message }:Emaildata) => {
   try {
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.com',

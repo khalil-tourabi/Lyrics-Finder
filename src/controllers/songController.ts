@@ -52,10 +52,10 @@ export const listOfArtist = async(req:Request,res:Response)=>{
 export const musicByAtrist= async(req:Request,res:Response)=>{
     try {
         const {ArtistName} = req.body;
-        if (!ArtistName) {
+        const musiclyrecs= await Song.find({artiste:ArtistName})
+        if (!musiclyrecs) {
             return res.status(StatusCodes.NOT_FOUND).json({error: new NotFoundError(`sorry the we don't have any song by this artist ${ArtistName} `).message});
         }
-        const musiclyrecs= await Song.find({artiste:ArtistName})
         return res
         .status(StatusCodes.OK)
         .json({message:`here is the songs that we have by the this artest ${ArtistName}`,
