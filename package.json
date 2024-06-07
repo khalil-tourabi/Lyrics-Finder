@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Lyrics-Finder is a Rest API application that allows users to easily search for and discover the lyrics of their favorite songs. In addition to providing lyrics, the application offers additional features to enhance the user experience, such as information about artists.",
   "main": "app.js",
-  "type": "module",
+
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon dist/app.js",
     "dev": "concurrently -k \"tsc -p app -w\" \"nodemon app.js\""
   },
   "keywords": [],
@@ -22,10 +22,16 @@
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1",
     "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.9.13",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^6.4.15",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.2"
   }
