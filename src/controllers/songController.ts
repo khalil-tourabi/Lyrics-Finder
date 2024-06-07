@@ -37,7 +37,6 @@ export const findmusic = async (req:Request,res:Response)=>{
 
 export const listOfArtist = async(req:Request,res:Response)=>{
     try {
-        const {ArtistName} = req.body;
         const artist = await Artiste.find();
         return res
         .status(StatusCodes.OK)

@@ -11,10 +11,12 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 const authRoute_1 = __importDefault(require("./src/routes/authRoute"));
 const userRoute_1 = __importDefault(require("./src/routes/userRoute"));
-const songController_1 = __importDefault(require("./src/routes/songController"));
+const songRouter_1 = __importDefault(require("./src/routes/songRouter"));
+const adminRoute_1 = __importDefault(require("./src/routes/adminRoute"));
 app.use('/api', authRoute_1.default);
 app.use('/api', userRoute_1.default);
-app.use('/api', songController_1.default);
+app.use('/api', songRouter_1.default);
+app.use('/api', adminRoute_1.default);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Something went wrong!' });

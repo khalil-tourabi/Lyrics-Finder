@@ -10,13 +10,16 @@ app.use(express.urlencoded({ extended: true }));
 
 import authRoute from "./src/routes/authRoute";
 import userRoute from "./src/routes/userRoute";
-import findrouter from "./src/routes/songController";
+import songRouter from "./src/routes/songRouter";
+import adminRoute from "./src/routes/adminRoute";
 
 
 
 app.use('/api', authRoute)
 app.use('/api', userRoute)
-app.use('/api', findrouter)
+app.use('/api', songRouter)
+app.use('/api', adminRoute)
+
 
 app.use((err:any, req:Request, res:Response, next:NextFunction) => {
     console.error(err.stack);

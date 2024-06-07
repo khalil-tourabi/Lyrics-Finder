@@ -31,7 +31,6 @@ const findmusic = async (req, res) => {
 exports.findmusic = findmusic;
 const listOfArtist = async (req, res) => {
     try {
-        const { ArtistName } = req.body;
         const artist = await Artiste_js_1.Artiste.find();
         return res
             .status(http_status_codes_1.StatusCodes.OK)
@@ -47,10 +46,10 @@ exports.listOfArtist = listOfArtist;
 const musicByAtrist = async (req, res) => {
     try {
         const { ArtistName } = req.body;
-        if (!ArtistName) {
+        const musiclyrecs = await Song_js_1.Song.find({ artiste: ArtistName });
+        if (!musiclyrecs) {
             return res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json({ error: new index_1.NotFoundError(`sorry the we don't have any song by this artist ${ArtistName} `).message });
         }
-        const musiclyrecs = await Song_js_1.Song.find({ artiste: ArtistName });
         return res
             .status(http_status_codes_1.StatusCodes.OK)
             .json({ message: `here is the songs that we have by the this artest ${ArtistName}`,
