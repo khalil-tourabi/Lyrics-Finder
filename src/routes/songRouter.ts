@@ -1,10 +1,10 @@
 import express from "express";
-const findrouter = express.Router();
+const songRouter = express.Router();
 import tokenVerification from "../middlewares/tokenVerification.js"
 import { findmusic,listOfArtist,musicByAtrist } from "../controllers/songController.js";
 
-findrouter.post("/findesong",tokenVerification,findmusic)
-.post("/artists",tokenVerification,listOfArtist)
+songRouter.post("/findesong",tokenVerification,findmusic)
+.get("/artists",tokenVerification,listOfArtist)
 .post("/musicByartist",tokenVerification,musicByAtrist)
 
-export default findrouter;
+export default songRouter;
